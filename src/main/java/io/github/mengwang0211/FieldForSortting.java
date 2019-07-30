@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 
 /**
  * The <code>FieldForSortting</code>
- * 
- * @author wmlucas.cn@gmail.com
+ *
+ * @author wmlucas.cn @gmail.com
  * @version 1.0
  */
 public class FieldForSortting {
@@ -13,7 +13,9 @@ public class FieldForSortting {
     private int index;
 
     /**
-     * @param field
+     * Field for sortting
+     *
+     * @param field field
      */
     public FieldForSortting(Field field) {
         super();
@@ -21,8 +23,10 @@ public class FieldForSortting {
     }
 
     /**
-     * @param field
-     * @param index
+     * Field for sortting
+     *
+     * @param field field
+     * @param index index
      */
     public FieldForSortting(Field field, int index) {
         super();
@@ -31,6 +35,8 @@ public class FieldForSortting {
     }
 
     /**
+     * Gets field *
+     *
      * @return the field
      */
     public Field getField() {
@@ -38,14 +44,17 @@ public class FieldForSortting {
     }
 
     /**
-     * @param field
-     *            the field to set
+     * Sets field *
+     *
+     * @param field the field to set
      */
     public void setField(Field field) {
         this.field = field;
     }
 
     /**
+     * Gets index *
+     *
      * @return the index
      */
     public int getIndex() {
@@ -53,8 +62,9 @@ public class FieldForSortting {
     }
 
     /**
-     * @param index
-     *            the index to set
+     * Sets index *
+     *
+     * @param index the index to set
      */
     public void setIndex(int index) {
         this.index = index;

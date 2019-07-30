@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * The <code>ExcelLogs</code>
- * 
- * @author wmlucas.cn@gmail.com
+ *
+ * @author wmlucas.cn @gmail.com
  * @version 1.0
  */
 public class ExcelLogs {
@@ -14,7 +14,7 @@ public class ExcelLogs {
     private List<ExcelLog> logList;
 
     /**
-     * 
+     * Excel logs
      */
     public ExcelLogs() {
         super();
@@ -22,6 +22,8 @@ public class ExcelLogs {
     }
 
     /**
+     * Gets has error *
+     *
      * @return the hasError
      */
     public Boolean getHasError() {
@@ -29,20 +31,28 @@ public class ExcelLogs {
     }
 
     /**
-     * @param hasError
-     *            the hasError to set
+     * Sets has error *
+     *
+     * @param hasError the hasError to set
      */
     public void setHasError(Boolean hasError) {
         this.hasError = hasError;
     }
 
     /**
+     * Gets log list *
+     *
      * @return the logList
      */
     public List<ExcelLog> getLogList() {
         return logList;
     }
 
+    /**
+     * Gets error log list *
+     *
+     * @return the error log list
+     */
     public List<ExcelLog> getErrorLogList() {
         List<ExcelLog> errList = new ArrayList<ExcelLog>();
         for (ExcelLog log : this.logList) {
@@ -54,8 +64,9 @@ public class ExcelLogs {
     }
 
     /**
-     * @param logList
-     *            the logList to set
+     * Sets log list *
+     *
+     * @param logList the logList to set
      */
     public void setLogList(List<ExcelLog> logList) {
         this.logList = logList;

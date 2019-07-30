@@ -2,8 +2,8 @@ package io.github.mengwang0211;
 
 /**
  * The <code>ExcelLog</code>
- * 
- * @author wmlucas.cn@gmail.com
+ *
+ * @author wmlucas.cn @gmail.com
  * @version 1.0
  */
 public class ExcelLog {
@@ -12,6 +12,8 @@ public class ExcelLog {
     private String log;
 
     /**
+     * Gets row num *
+     *
      * @return the rowNum
      */
     public Integer getRowNum() {
@@ -19,14 +21,17 @@ public class ExcelLog {
     }
 
     /**
-     * @param rowNum
-     *            the rowNum to set
+     * Sets row num *
+     *
+     * @param rowNum the rowNum to set
      */
     public void setRowNum(Integer rowNum) {
         this.rowNum = rowNum;
     }
 
     /**
+     * Gets object *
+     *
      * @return the object
      */
     public Object getObject() {
@@ -34,14 +39,17 @@ public class ExcelLog {
     }
 
     /**
-     * @param object
-     *            the object to set
+     * Sets object *
+     *
+     * @param object the object to set
      */
     public void setObject(Object object) {
         this.object = object;
     }
 
     /**
+     * Gets log *
+     *
      * @return the log
      */
     public String getLog() {
@@ -49,8 +57,10 @@ public class ExcelLog {
     }
 
     /**
-     * @param object
-     * @param log
+     * Excel log
+     *
+     * @param object object
+     * @param log    log
      */
     public ExcelLog(Object object, String log) {
         super();
@@ -59,9 +69,11 @@ public class ExcelLog {
     }
 
     /**
-     * @param rowNum
-     * @param object
-     * @param log
+     * Excel log
+     *
+     * @param object object
+     * @param log    log
+     * @param rowNum row num
      */
     public ExcelLog(Object object, String log, Integer rowNum) {
         super();
@@ -71,8 +83,9 @@ public class ExcelLog {
     }
 
     /**
-     * @param log
-     *            the log to set
+     * Sets log *
+     *
+     * @param log the log to set
      */
     public void setLog(String log) {
         this.log = log;

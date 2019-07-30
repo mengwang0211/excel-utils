@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * The <code>ExcelUtil</code> 与 {@link ExcelCell}搭配使用
  *
- * @author wmlucas.cn@gmail.com
+ * @author wmlucas.cn @gmail.com
  * @version 1.0
  */
 @Slf4j
@@ -83,8 +83,8 @@ public class ExcelUtil {
     /**
      * 获取单元格值
      *
-     * @param cell
-     * @return
+     * @param cell cell
+     * @return cell value
      */
     protected static Object getCellValue(Cell cell) {
         if (cell == null
@@ -127,10 +127,9 @@ public class ExcelUtil {
      * 利用JAVA的反射机制，将放置在JAVA集合中并且符号一定条件的数据以EXCEL 的形式输出到指定IO设备上<br>
      * 用于单个sheet
      *
-     * @param <T>
+     * @param <T>     parameter
      * @param headers 表格属性列名数组
-     * @param dataset 需要显示的数据集合,集合中一定要放置符合javabean风格的类的对象。此方法支持的
-     *                javabean属性的数据类型有基本数据类型及String,Date,String[],Double[]
+     * @param dataset 需要显示的数据集合,集合中一定要放置符合javabean风格的类的对象。此方法支持的                javabean属性的数据类型有基本数据类型及String,Date,String[],Double[]
      * @param out     与输出设备关联的流对象，可以将EXCEL文档导出到本地文件或者网络中
      */
     public static <T> void exportExcel(Map<String,String> headers, Collection<T> dataset, OutputStream out) {
@@ -141,10 +140,9 @@ public class ExcelUtil {
      * 利用JAVA的反射机制，将放置在JAVA集合中并且符号一定条件的数据以EXCEL 的形式输出到指定IO设备上<br>
      * 用于单个sheet
      *
-     * @param <T>
+     * @param <T>     parameter
      * @param headers 表格属性列名数组
-     * @param dataset 需要显示的数据集合,集合中一定要放置符合javabean风格的类的对象。此方法支持的
-     *                javabean属性的数据类型有基本数据类型及String,Date,String[],Double[]
+     * @param dataset 需要显示的数据集合,集合中一定要放置符合javabean风格的类的对象。此方法支持的                javabean属性的数据类型有基本数据类型及String,Date,String[],Double[]
      * @param out     与输出设备关联的流对象，可以将EXCEL文档导出到本地文件或者网络中
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyy-MM-dd"
      */
@@ -163,6 +161,13 @@ public class ExcelUtil {
         }
     }
 
+    /**
+     * Export excel *
+     *
+     * @param datalist        datalist
+     * @param out             out
+     * @param autoColumnWidth auto column width
+     */
     public static void exportExcel(String[][] datalist, OutputStream out,boolean autoColumnWidth) {
         try {
             // 声明一个工作薄
@@ -197,6 +202,13 @@ public class ExcelUtil {
             log.error(e.toString(), e);
         }
     }
+
+    /**
+     * Export excel *
+     *
+     * @param datalist datalist
+     * @param out      out
+     */
     public static void exportExcel(String[][] datalist, OutputStream out) {
         exportExcel(datalist,out,true);
     }
@@ -205,7 +217,7 @@ public class ExcelUtil {
      * 利用JAVA的反射机制，将放置在JAVA集合中并且符号一定条件的数据以EXCEL 的形式输出到指定IO设备上<br>
      * 用于多个sheet
      *
-     * @param <T>
+     * @param <T>    parameter
      * @param sheets {@link ExcelSheet}的集合
      * @param out    与输出设备关联的流对象，可以将EXCEL文档导出到本地文件或者网络中
      */
@@ -217,7 +229,7 @@ public class ExcelUtil {
      * 利用JAVA的反射机制，将放置在JAVA集合中并且符号一定条件的数据以EXCEL 的形式输出到指定IO设备上<br>
      * 用于多个sheet
      *
-     * @param <T>
+     * @param <T>     parameter
      * @param sheets  {@link ExcelSheet}的集合
      * @param out     与输出设备关联的流对象，可以将EXCEL文档导出到本地文件或者网络中
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyy-MM-dd"
@@ -388,13 +400,14 @@ public class ExcelUtil {
     /**
      * 把Excel的数据封装成voList
      *
+     * @param <T>         parameter
      * @param clazz       vo的Class
      * @param inputStream excel输入流
      * @param pattern     如果有时间数据，设定输入格式。默认为"yyy-MM-dd"
      * @param logs        错误log集合
      * @param arrayCount  如果vo中有数组类型,那就按照index顺序,把数组应该有几个值写上.
-     * @return voList
-     * @throws RuntimeException
+     * @return voList collection
+     *
      */
     public static <T> Collection<T> importExcel(Class<T> clazz, InputStream inputStream,
                                                 String pattern, ExcelLogs logs, Integer... arrayCount) {
@@ -542,7 +555,6 @@ public class ExcelUtil {
     }
 
 
-
     /**
      * 把Excel的数据封装成jsonarray
      *
@@ -551,8 +563,8 @@ public class ExcelUtil {
      * @param pattern     如果有时间数据，设定输入格式。默认为"yyy-MM-dd"
      * @param logs        错误log集合
      * @param arrayCount  如果vo中有数组类型,那就按照index顺序,把数组应该有几个值写上.
-     * @return JSON
-     * @throws RuntimeException
+     * @return JSON json array
+     *
      */
     public static JSONArray excel2Json(Class<T> clazz, InputStream inputStream,
                                         String pattern, ExcelLogs logs, Integer... arrayCount) {
@@ -664,8 +676,8 @@ public class ExcelUtil {
     /**
      * 根据annotation的seq排序后的栏位
      *
-     * @param clazz
-     * @return
+     * @param clazz clazz
+     * @return list
      */
     protected static List<FieldForSortting> sortFieldByAnno(Class<?> clazz) {
         Field[] fieldsArr = clazz.getDeclaredFields();
@@ -719,6 +731,12 @@ public class ExcelUtil {
         return str.length() == 0;
     }
 
+    /**
+     * Is not blank boolean
+     *
+     * @param str str
+     * @return the boolean
+     */
     protected static boolean isNotBlank(String str){
         return !isBlank(str);
     }

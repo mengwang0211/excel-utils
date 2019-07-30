@@ -5,8 +5,9 @@ import java.util.Map;
 
 /**
  * 用于汇出多个sheet的Vo The <code>ExcelSheet</code>
- * 
- * @author wmlucas.cn@gmail.com
+ *
+ * @param <T> parameter
+ * @author wmlucas.cn @gmail.com
  * @version 1.0
  */
 public class ExcelSheet<T> {
@@ -15,6 +16,8 @@ public class ExcelSheet<T> {
     private Collection<T> dataset;
 
     /**
+     * Gets sheet name *
+     *
      * @return the sheetName
      */
     public String getSheetName() {
@@ -23,9 +26,8 @@ public class ExcelSheet<T> {
 
     /**
      * Excel页签名称
-     * 
-     * @param sheetName
-     *            the sheetName to set
+     *
+     * @param sheetName the sheetName to set
      */
     public void setSheetName(String sheetName) {
         this.sheetName = sheetName;
@@ -33,7 +35,7 @@ public class ExcelSheet<T> {
 
     /**
      * Excel表头
-     * 
+     *
      * @return the headers
      */
     public Map<String,String> getHeaders() {
@@ -41,8 +43,9 @@ public class ExcelSheet<T> {
     }
 
     /**
-     * @param headers
-     *            the headers to set
+     * Sets headers *
+     *
+     * @param headers the headers to set
      */
     public void setHeaders(Map<String,String> headers) {
         this.headers = headers;
@@ -50,7 +53,7 @@ public class ExcelSheet<T> {
 
     /**
      * Excel数据集合
-     * 
+     *
      * @return the dataset
      */
     public Collection<T> getDataset() {
@@ -58,8 +61,9 @@ public class ExcelSheet<T> {
     }
 
     /**
-     * @param dataset
-     *            the dataset to set
+     * Sets dataset *
+     *
+     * @param dataset the dataset to set
      */
     public void setDataset(Collection<T> dataset) {
         this.dataset = dataset;

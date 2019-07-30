@@ -9,76 +9,79 @@ import java.lang.annotation.Target;
 /**
  * The <code>ExcelCell</code><br>
  * 数值型的栏位只能使用Double
- * @see {@link io.github.mengwang0211.ExcelUtil#exportExcel}
- * @author wmlucas.cn@gmail.com
- * @version 1.0
- * @version 1.1,添加了专用于验证的子注解:Valid
+ *
+ * @author wmlucas.cn @gmail.com
+ * @version 1.1, 添加了专用于验证的子注解 :Valid
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ExcelCell {
     /**
      * 顺序 default 100
-     * 
-     * @return index
+     *
+     * @return index int
      */
     int index();
 
     /**
      * 当值为null时要显示的值 default StringUtils.EMPTY
-     * 
-     * @return defaultValue
+     *
+     * @return defaultValue string
      */
     String defaultValue() default "";
 
     /**
      * 用于验证
-     * 
-     * @return valid
+     *
+     * @return valid valid
      */
     Valid valid() default @Valid();
 
+    /**
+     * Valid
+     */
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     @interface Valid {
         /**
          * 必须与in中String相符,目前仅支持String类型
-         * 
+         *
          * @return e.g. {"key","value"}
          */
         String[] in() default {};
 
         /**
          * 是否允许为空,用于验证数据 default true
-         * 
-         * @return allowNull
+         *
+         * @return allowNull boolean
          */
         boolean allowNull() default true;
 
         /**
          * Apply a "greater than" constraint to the named property
-         * 
-         * @return gt
+         *
+         * @return gt double
          */
         double gt() default Double.NaN;
 
         /**
          * Apply a "less than" constraint to the named property
-         * @return lt
+         *
+         * @return lt double
          */
         double lt() default Double.NaN;
 
         /**
          * Apply a "greater than or equal" constraint to the named property
-         * 
-         * @return ge
+         *
+         * @return ge double
          */
         double ge() default Double.NaN;
 
         /**
          * Apply a "less than or equal" constraint to the named property
-         * 
-         * @return le
+         *
+         * @return le double
          */
         double le() default Double.NaN;
     }
