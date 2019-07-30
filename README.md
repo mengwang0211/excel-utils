@@ -94,7 +94,7 @@ public class Model {
     // 导入
     ExcelUtil.importExcel 方法的第一个参数,是个Class,如果你有Bean,就写Bean的Class,反之,直接Map.class
 
-XLS 文件
+ // XLS 文件
 File f=new File("src/test/resources/test.xls");
 InputStream inputStream= new FileInputStream(f);
 
@@ -104,7 +104,7 @@ Collection<Map> importExcel = ExcelUtil.importExcel(Map.class, inputStream, "yyy
 for(Map m : importExcel){
   System.out.println(m);
 }
-XLSX 文件
+ // XLSX 文件
 File f=new File("src/test/resources/test.xlsx");
 InputStream inputStream= new FileInputStream(f);
 
