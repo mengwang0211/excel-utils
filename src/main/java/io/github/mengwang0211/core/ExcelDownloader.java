@@ -53,7 +53,7 @@ public class ExcelDownloader {
                     cell.setCellStyle(style);
                     cell.setCellValue(head.getName());
                     // 合并区域
-                    if (head.getFromRowIndex() != head.getEndRowIndex() && head.getFromColIndex() != head.getEndColIndex()) {
+                    if (head.getFromRowIndex() != head.getEndRowIndex() || head.getFromColIndex() != head.getEndColIndex()) {
                         CellRangeAddress region = new CellRangeAddress(head.getFromRowIndex(), head.getEndRowIndex(), head.getFromColIndex(), head.getEndColIndex());
                         hssfSheet.addMergedRegion(region);
                     }
@@ -66,17 +66,18 @@ public class ExcelDownloader {
 
             // 绘制表内容
             Body body = sheet.getBody();
-            List<List<String>> all_body_data = body.getData();
-            for (int i = 0; i < all_body_data.size(); i++) {
-                List<String> row_data = all_body_data.get(i);
-                HSSFRow __row = hssfSheet.createRow(rowNumer + i);
-                for (int j = 0; j < row_data.size(); j++) {
-                    HSSFCell cell_00 = __row.createCell(j);
-                    cell_00.setCellStyle(style);
-                    cell_00.setCellValue(row_data.get(j));
+            if (null != body){
+                List<List<String>> all_body_data = body.getData();
+                for (int i = 0; i < all_body_data.size(); i++) {
+                    List<String> row_data = all_body_data.get(i);
+                    HSSFRow __row = hssfSheet.createRow(rowNumer + i);
+                    for (int j = 0; j < row_data.size(); j++) {
+                        HSSFCell cell_00 = __row.createCell(j);
+                        cell_00.setCellStyle(style);
+                        cell_00.setCellValue(row_data.get(j));
+                    }
                 }
             }
-
             File file = new File(workPath);
             FileOutputStream fout = null;
             try {
