@@ -6,7 +6,7 @@
 
     <groupId>io.github.mengwang0211</groupId>
     <artifactId>excel-utils</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 
     <properties>
         <projectlombok.version>1.16.18</projectlombok.version>

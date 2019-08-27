@@ -11,7 +11,7 @@
 
     <groupId>io.github.mengwang0211</groupId>
     <artifactId>excel-utils</artifactId>
-    <version>1.0.0</version>
+    <version>${latest.version}</version>
 
 ```
 

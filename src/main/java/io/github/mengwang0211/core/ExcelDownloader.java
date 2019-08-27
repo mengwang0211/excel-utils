@@ -29,33 +29,35 @@ public class ExcelDownloader {
      *
      * @param workPath work path
      * @param sheets   sheets
-     * @return the string
      */
-    public String execute(String workPath, List<Sheet> sheets){
+    public String execute(String workPath, List<Sheet> sheets) {
         List<Sheet> rankedSheets = Ranker.executeSheet(sheets);
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFCellStyle style = workbook.createCellStyle();
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setVerticalAlignment(VerticalAlignment.CENTER);
-        for (Sheet sheet : rankedSheets){
+        for (Sheet sheet : rankedSheets) {
             HSSFSheet hssfSheet = workbook.createSheet(sheet.getName());
             // 绘制表头
             List<Head> heads = Ranker.executeHeadRowIndex(sheet.getHeads());
             // 按照行号分组
             Map<Integer, List<Head>> groupBy = heads.stream().collect(Collectors.groupingBy(Head::getFromRowIndex));
             int rowNumer = 0;
-            for (Integer key : groupBy.keySet()){
+            for (Integer key : groupBy.keySet()) {
                 List<Head> rowHead = groupBy.get(key);
                 List<Head> rankedRowHead = Ranker.executeHeadFromColIndex(rowHead);
                 HSSFRow __row = hssfSheet.createRow(key);
                 int maxRow = 0;
-                for (Head head : rankedRowHead){
+                for (Head head : rankedRowHead) {
                     HSSFCell cell = __row.createCell(head.getFromColIndex());
                     cell.setCellStyle(style);
                     cell.setCellValue(head.getName());
-                    CellRangeAddress region = new CellRangeAddress(head.getFromRowIndex(), head.getEndRowIndex(), head.getFromColIndex(), head.getEndColIndex());
-                    hssfSheet.addMergedRegion(region);
-                    if ((head.getEndRowIndex() - head.getFromRowIndex()) > maxRow){
+                    // 合并区域
+                    if (head.getFromRowIndex() != head.getEndRowIndex() && head.getFromColIndex() != head.getEndColIndex()) {
+                        CellRangeAddress region = new CellRangeAddress(head.getFromRowIndex(), head.getEndRowIndex(), head.getFromColIndex(), head.getEndColIndex());
+                        hssfSheet.addMergedRegion(region);
+                    }
+                    if ((head.getEndRowIndex() - head.getFromRowIndex()) > maxRow) {
                         maxRow = head.getEndRowIndex() - head.getFromRowIndex();
                     }
                 }
