@@ -30,7 +30,7 @@ public class ExcelDownloader {
      * @param workPath work path
      * @param sheets   sheets
      */
-    public String execute(String workPath, List<Sheet> sheets) {
+    public String execute(String workPath, List<Sheet> sheets, CellRangeAddress bodyRegion) {
         List<Sheet> rankedSheets = Ranker.executeSheet(sheets);
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFCellStyle style = workbook.createCellStyle();
@@ -78,6 +78,12 @@ public class ExcelDownloader {
                     }
                 }
             }
+
+            if (null != bodyRegion){
+                // 合并body
+                hssfSheet.addMergedRegion(bodyRegion);
+            }
+
             File file = new File(workPath);
             FileOutputStream fout = null;
             try {
